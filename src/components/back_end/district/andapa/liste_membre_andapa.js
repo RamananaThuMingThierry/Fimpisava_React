@@ -1,12 +1,12 @@
 import React, { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 import ReactPaginate from 'react-paginate';
-import BASE_URL from '../../../BasesUrl';
+import BASE_URL from "../../../../BasesUrl";
 import {Link} from "react-router-dom";
 import swal from "sweetalert";
-import Loading from "../constants/Loading";
+import Loading from "../../constants/Loading";
 
-const ListeDesMembresFimpisava = () =>{
+const ListeMembresAndapa = () =>{
     const [loading, setLoading] = useState(true);
     
     const [searchInput, setSearch] = useState({
@@ -19,13 +19,13 @@ const ListeDesMembresFimpisava = () =>{
         setSearch({...searchInput, [e.target.name]: e.target.value});
     }
 
-    const [liste_des_membres_fimpisava, setliste_des_membres_fimpisava] = useState([]);
+    const [liste_des_membres_district_andapa, setliste_des_membres_district_andapa] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const recordsPerPage = 10;
     const lastIndex = currentPage * recordsPerPage;
     const firstIndex = lastIndex - recordsPerPage;
-    const records = liste_des_membres_fimpisava.slice(firstIndex, lastIndex);
-    const npage = Math.ceil(liste_des_membres_fimpisava.length / recordsPerPage);
+    const records = liste_des_membres_district_andapa.slice(firstIndex, lastIndex);
+    const npage = Math.ceil(liste_des_membres_district_andapa.length / recordsPerPage);
     const numbers = [...Array(npage +1).keys()].slice(1);
     
     const [user, setUser] = useState([]);
@@ -49,9 +49,9 @@ const ListeDesMembresFimpisava = () =>{
       };
 
     useEffect(() =>{
-        axios.get(`api/liste_des_membres_fimpisava`).then(res =>{
+        axios.get(`api/liste_des_membres_district_andapa`).then(res =>{
             if(res.status === 200){
-                setliste_des_membres_fimpisava(res.data.liste_des_membres_fimpisava);   
+                setliste_des_membres_district_andapa(res.data.liste_des_membres_district_andapa);   
                 }
          });
         fetchUserId();
@@ -68,14 +68,14 @@ const ListeDesMembresFimpisava = () =>{
         searchInput.search = '';
         searchInput.select = '';
 
-        axios.get(`api/liste_des_membres_fimpisava`).then(res =>{
+        axios.get(`api/liste_des_membres_district_andapa`).then(res =>{
             if(res.status === 200){
-                setliste_des_membres_fimpisava(res.data.liste_des_membres_fimpisava);   
+                setliste_des_membres_district_andapa(res.data.liste_des_membres_district_andapa);   
             }
          });
     }
     
-    const RechercheMembresFimpisavaSubmit = (e) =>{
+    const RechercheMembresDistrictAntalhaSubmit = (e) =>{
         e.preventDefault();
 
         const data = {
@@ -92,7 +92,7 @@ const ListeDesMembresFimpisava = () =>{
                 console.log(res.data);
                 if(res.data.status  === 200){
                     console.log(res.data.recherche_un__membre_fimpisava);
-                    setliste_des_membres_fimpisava(res.data.recherche_un__membre_fimpisava);
+                    setliste_des_membres_district_andapa(res.data.recherche_un__membre_fimpisava);
                 }else if(res.data.status === 400){
                     swal("Info", res.data.message,"info");
                 }else if(res.data.status === 404){
@@ -138,7 +138,7 @@ const ListeDesMembresFimpisava = () =>{
                     <div className="card mt-2 p-2 rounded-0">
                         <div className="d-flex justify-content-between align-items-center">
                             <h3 className="roboto-font text-muted text-center mt-2">
-                                Liste des membres FI.MPI.SAVA
+                                DISTRICT D' ANDAPA
                             </h3>
                             <div className="d-flex justify-content-between align-items-center">
                                 <button onClick={Acutaliser} className="btn rounded-0 btn-primary btn-md mt-1"><i className="fas fa-refresh"></i></button>
@@ -152,7 +152,7 @@ const ListeDesMembresFimpisava = () =>{
             <div className="row">
                 <div className="col-md-12">
                     <div className="card mt-1 p-2 rounded-0">
-                       <form onSubmit={RechercheMembresFimpisavaSubmit}>
+                       <form onSubmit={RechercheMembresDistrictAntalhaSubmit}>
                             <div className="input-group">
                                 <input type="search" name="search" className="roboto-font form-control rounded-0" placeholder="Recherche" value={searchInput.search} onChange={handleInput} aria-label="Search" aria-describedby="search-addon" />
                                 <select className="form-select roboto-font" name="select" value={searchInput.select} onChange={handleInput} aria-label="Default select example">
@@ -240,4 +240,4 @@ const ListeDesMembresFimpisava = () =>{
     );
 }
 
-export default ListeDesMembresFimpisava;
+export default ListeMembresAndapa;

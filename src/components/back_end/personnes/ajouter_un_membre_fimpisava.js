@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import swal from 'sweetalert';
 import { useHistory } from "react-router-dom";
 
-const AjouterUnElecteurMembre = () =>{
+const AjouterUnMembreFimpisava = () =>{
 
     const history = useHistory();
     
@@ -19,10 +19,17 @@ const AjouterUnElecteurMembre = () =>{
         numero_carte:'',
         nom:'',
         prenom:'',
-        sexe:'',
-        cin:'',
-        axes:'',
-        sympathisant:'',
+        date_de_naissance:'',
+        lieu_de_naissance:'',
+        filieres:'',
+        niveau:'',
+        district:'',
+        adresse:'',
+        profession:'',
+        fonction:'',
+        contact:'',
+        facebook:'',
+        telephone:'',
         date_inscription:'',
     });
 
@@ -39,46 +46,62 @@ const AjouterUnElecteurMembre = () =>{
         setPicture(URL.createObjectURL(photo));
     }
 
-    const AjouterUnElecteurMembreSubmit = (e) =>{
+    const AjouterUnMembreFIMPISAVASubmit = (e) =>{
         e.preventDefault();
 
         const formData = new FormData();
 
         if(membreInput.numero_carte == ''){
-            swal("Warning", "Veuillez saisir votre numéro carte A.E.U.T.N.A !", "warning");
+            swal("Avertissement", "Veuillez saisir votre numéro carte A.E.U.T.N.A !", "warning");
+        }else if(membreInput.district == ''){
+            swal("Avertissement", "Veuillez saisir votre district", "warning");
         }else if(membreInput.nom == ''){
-            swal("Warning", "Veuillez saisir votre nom !", "warning");
-        }else if(membreInput.sexe == ''){
-            swal("Warning", "Veuillez séléctionner votre sexe !", "warning");
-        }else if(membreInput.cin != '' && membreInput.cin.length != 12){
-            swal("Warning", "Votre numéro de C.I.N invalide !", "warning");
-        }else if(membreInput.axes == '' && (membreInput.sympathisant == 'Non' || membreInput.sympathisant == '')){
-                swal("Warning", "Veuillez séléctionner votre axes !", "warning");
+            swal("Avertissement", "Veuillez saisir votre nom !", "warning");
+        }else if(membreInput.date_de_naissance == ''){
+            swal("Avertissement", "Veuillez saisir votre date de naissance !", "warning");
+        }else if(membreInput.lieu_de_naissance == ''){
+            swal("Avertissement", "Veuillez saisir votre lieu de naissance", "warning");
+        }else if(membreInput.filieres == ''){
+            swal("Avertissement", "Veuillez saisir votre filieres", "warning");
+        }else if(membreInput.filieres != '' && membreInput.niveau == ''){
+            swal("Avertissement", "Veuillez saisir votre niveau", "warning");
+        }else if(membreInput.profession == ''){
+            swal("Avertissement", "Veuillez saisir votre profession", "warning");
+        }else if(membreInput.contact != '' && membreInput.contact.length != 10){
+            swal("Avertissement", "Votre conctat n'est pas valide!", "warning");
+        }else if(membreInput.telephone != '' && membreInput.telephone.length != 10){
+            swal("Avertissement", "contact parent n'est pas valide!", "warning");
+        }else if(membreInput.adresse == ''){
+            swal("Avertissement", "Veuillez saisir votre adresse", "warning");
         }else if(membreInput.date_inscription == ''){
-            swal("Warning", "Veuillez saisir votre date d'inscription !", "warning");
-        }
-        else if(membreInput.axes != '' && membreInput.sympathisant == 'Oui'){
-                swal("Warning", "Vous n'êtes pas sympathisant !", "warning");
+            swal("Avertissement", "Veuillez saisir votre date d'inscription !", "warning");
         }else{
 
             formData.append('photo', image);
             formData.append('numero_carte', membreInput.numero_carte);
             formData.append('nom', membreInput.nom);
             formData.append('prenom', membreInput.prenom);
-            formData.append('sexe', membreInput.sexe);
-            formData.append('cin', membreInput.cin);
-            formData.append('axes', membreInput.axes);
-            formData.append('sympathisant', membreInput.sympathisant ?? 'Non');
+            formData.append('date_de_naissance', membreInput.date_de_naissance);
+            formData.append('lieu_de_naissance', membreInput.lieu_de_naissance);
+            formData.append('filieres', membreInput.filieres);
+            formData.append('niveau', membreInput.niveau);
+            formData.append('district', membreInput.district);
+            formData.append('adresse', membreInput.adresse);
+            formData.append('profession', membreInput.profession);
+            formData.append('fonction', membreInput.fonction);
+            formData.append('contact', membreInput.contact);
+            formData.append('facebook', membreInput.facebook);
+            formData.append('telephone', membreInput.telephone);
             formData.append('date_inscription', membreInput.date_inscription);
             
             console.log(formData);
     
-            axios.post(`api/ajouter_un_electeur_membre`, formData).then(res =>{
+            axios.post(`api/ajouter_un_membre_fimpisava`, formData).then(res =>{
                 axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';   
                 console.log(res.data);
                 if(res.data.status === 200){
                     swal("Réussi", res.data.message, "success");
-                    history.push('/admin/liste_des_electeurs_membres');
+                    history.push('/admin/liste_des_membres_fimpisava');
                 }else if(res.data.status === 404){
                     swal("Avertissement", res.data.message, "warning");
                 }else if(res.data.status === 422){
@@ -91,22 +114,22 @@ const AjouterUnElecteurMembre = () =>{
     return (
         <Fragment>
             <div className="row">
-                <div className="col-md-10 offset-md-1">
+                <div className="col-md-12">
                     <div className="card elevation-1 border-0 rounded-0 mt-2">
-                        <h3 className="text-center text-muted my-3 roboto-font">Ajouter un électeur membres A.E.U.T.N.A</h3>
+                        <h3 className="text-center text-muted my-3 roboto-font">Ajouter un membre FI.MPI.SAVA</h3>
                     </div>
                 </div>
             </div>
             <div className="row">
-                <div className="col-md-10 offset-md-1">
+                <div className="col-md-12">
                     <div className="card elevation-1 border-0 rounded-0 mt-1">
                         <div className="card-body">
-                            <form  onSubmit={AjouterUnElecteurMembreSubmit} id="ELECTEURS_FORM" encType="multipart/form-data">
+                            <form  onSubmit={AjouterUnMembreFIMPISAVASubmit} id="ELECTEURS_FORM" encType="multipart/form-data">
                                 <div className="row">
 
                                     <div className="col-md-4 mt-2">
                                         <div className="d-flex flex-column justify-content-center align-items-center">
-                                            <img className="mb-1 rounded-1" src={picture.photo != '' ? picture :  `${process.env.PUBLIC_URL}/images/photo.jpg`} height="189px" width="189px" alt="Image"/>                                          
+                                            <img className="mb-1 rounded-1" src={picture.photo != '' ? picture :  `${process.env.PUBLIC_URL}/assets/photo.jpg`} height="189px" width="189px" alt="Image"/>                                          
                                             <input type="file" name="photo" onChange={handleImage} className="mt-3 form-control rounded-0 p-3"/>
                                         </div>
                                     </div>
@@ -118,15 +141,17 @@ const AjouterUnElecteurMembre = () =>{
                                                 <input className="form-control p-3 rounded-0 roboto-font" type="number" min={1} max={1500} id="numero_carte" autoComplete="false" name="numero_carte" onChange={handleInput} value={membreInput.numero_carte ?? ''} placeholder="Saisir votre numéro de carte AEUTNA"/>
                                             </div>
                                             <div className="col-md-6 mt-2">
-                                                <label style={{fontWeight: 'bold', fontSize: '17px'}} for="sexe" className="roboto-font">Sexe</label>
-                                                <select className="form-select rounded-0 p-3 roboto-font" name="sexe" id="sexe" value={membreInput.sexe} onChange={handleInput}>
+                                                <label style={{fontWeight: 'bold', fontSize: '17px'}} for="district" className="roboto-font">District</label>
+                                                <select className="form-select rounded-0 p-3 roboto-font" name="district" id="district" value={membreInput.district} onChange={handleInput}>
                                                     <option value="" selected>Ouvre ce menu de séléction</option>
-                                                    <option value="masculin">Masculin</option>
-                                                    <option value="feminin">Féminin</option>
+                                                    <option value="Sambava">Sambava</option>
+                                                    <option value="Andapa">Andapa</option>
+                                                    <option value="Vohemar">Vohémar</option>
+                                                    <option value="Antalaha">Antalaha</option>
                                                 </select>
                                             </div>
                                         </div>
-
+                                        {/* Nom et Prénom */}
                                         <div className="row">
                                             <div className="col-md-6 mt-2">
                                                 <label style={{fontWeight: 'bold', fontSize: '17px'}} for="nom" className="roboto-font">Nom</label>
@@ -137,44 +162,81 @@ const AjouterUnElecteurMembre = () =>{
                                                 <input className="form-control p-3 rounded-0 roboto-font" type="text" value={membreInput.prenom ?? ''} id="prenom" name="prenom" autoComplete="false" placeholder="Saisir votre prénom" onChange={handleInput}/>
                                             </div>
                                         </div>
+                                        {/* Date de naissance et Lieu de naissance */}
                                         <div className="row">    
-                                            <div className="col-md-12 mt-2">
-                                                    <label style={{fontWeight: 'bold', fontSize: '17px'}} for="cin" className="roboto-font">C.I.N</label>
-                                                    <input maxLength={12} minLength={12} className="form-control p-3 rounded-0" id="cin" type="number" onChange={handleInput} value={membreInput.cin ?? ''} autoComplete="false" placeholder="Saisir votre Numéro de C.I.N" name="cin"/>
-                                                </div>
+                                            <div className="col-md-6 mt-2">
+                                                <label style={{fontWeight: 'bold', fontSize: '17px'}} for="date_de_naissance" className="roboto-font">Date de naissance</label>
+                                                <input className="form-control p-3 rounded-0 roboto-font" type="date" autoComplete="false" id="date_de_naissance" name="date_de_naissance" value={membreInput.date_de_naissance ?? ''} placeholder="Saisir votre date de naissance" onChange={handleInput}/>
+                                            </div>
+                                            <div className="col-md-6 mt-2">
+                                                <label style={{fontWeight: 'bold', fontSize: '17px'}} for="lieu_de_naissance" className="roboto-font">Lieu de naissance</label>
+                                                <input className="form-control p-3 rounded-0 roboto-font" type="text" value={membreInput.lieu_de_naissance ?? ''} id="lieu_de_naissance" name="lieu_de_naissance" autoComplete="false" placeholder="Saisir votre lieu de naissance" onChange={handleInput}/>
+                                            </div>
                                        </div>
                                     </div>
                                 </div>
+                                {/* Filières , niveau , profession */}
                                 <div className="row">
                                     <div className="col-md-4 mt-2">
-                                        <label style={{fontWeight: 'bold', fontSize: '17px'}} for="axes" className="roboto-font">Axes</label>
-                                        <select className="form-select rounded-0 p-3 roboto-font" name="axes" id="axes" value={membreInput.axes} onChange={handleInput}>
+                                        <label style={{fontWeight: 'bold', fontSize: '17px'}} for="filieres" className="roboto-font">Filière</label>
+                                        <input className="form-control p-3 rounded-0 roboto-font" type="text" value={membreInput.filieres ?? ''} id="filieres" name="filieres" autoComplete="false" placeholder="Saisir votre filière" onChange={handleInput}/>
+                                    </div>
+                                    <div className="col-md-4 mt-2">
+                                        <label style={{fontWeight: 'bold', fontSize: '17px'}} for="niveau" className="roboto-font">Niveau</label>
+                                        <select className="form-select rounded-0 p-3 roboto-font" name="niveau" id="niveau" value={membreInput.niveau} onChange={handleInput}>
                                             <option value="" selected>Ouvre ce menu de séléction</option>
-                                            <option value="Andempona">Andempona</option>
-                                            <option value="Andrarony">Andrarony</option>
-                                            <option value="Ankavanana">Ankavanana</option>
-                                            <option value="Ankavia">Ankavia</option>
-                                            <option value="Antalaha ville">Antalaha Ville</option>
-                                            <option value="Cap-Est">Cap-Est</option>
+                                            <option value="Licence 1">Licence 1</option>
+                                            <option value="Licence 2">Licence 2</option>
+                                            <option value="Licence 3">Licence 3</option>
+                                            <option value="Master 1">Master 1</option>
+                                            <option value="Master 2">Master 2</option>
                                         </select>
                                     </div>
                                     <div className="col-md-4 mt-2">
-                                        <label style={{fontWeight: 'bold', fontSize: '17px'}} for="sympathisant" className="roboto-font">sympathisant(e)</label>
-                                        <select className="form-select rounded-0 p-3 roboto-font" name="sympathisant" id="sympathisant" value={membreInput.sympathisant} onChange={handleInput}>
+                                        <label style={{fontWeight: 'bold', fontSize: '17px'}} for="profession" className="roboto-font">Profession</label>
+                                        <input className="form-control p-3 rounded-0 roboto-font" type="text" value={membreInput.profession ?? ''} id="profession" name="profession" autoComplete="false" placeholder="Saisir votre profession" onChange={handleInput}/>
+                                    </div>
+                                </div>
+                                {/* Filières , niveau , profession */}
+                                <div className="row">
+                                    <div className="col-md-4 mt-2">
+                                        <label style={{fontWeight: 'bold', fontSize: '17px'}} for="contact" className="roboto-font">Contact</label>
+                                        <input className="form-control p-3 rounded-0 roboto-font" type="number" value={membreInput.contact ?? ''} id="contact" name="contact" autoComplete="false" placeholder="Saisir votre contact" onChange={handleInput}/>
+                                    </div>
+                                    <div className="col-md-4 mt-2">
+                                        <label style={{fontWeight: 'bold', fontSize: '17px'}} for="telephone" className="roboto-font">Contact parent ou tuteur</label>
+                                        <input className="form-control p-3 rounded-0 roboto-font" type="number" value={membreInput.telephone ?? ''} id="telephone" name="telephone" autoComplete="false" placeholder="Saisir votre contact parent ou tuteur" onChange={handleInput}/>
+                                    </div>
+                                    <div className="col-md-4 mt-2">
+                                        <label style={{fontWeight: 'bold', fontSize: '17px'}} for="fonction" className="roboto-font">Fonction</label>
+                                        <select className="form-select rounded-0 p-3 roboto-font" name="fonction" id="fonction" value={membreInput.fonction} onChange={handleInput}>
                                             <option value="" selected>Ouvre ce menu de séléction</option>
-                                            <option value="Non">Non</option>
-                                            <option value="Oui">Oui</option>
+                                            <option value="0">Présient</option>
+                                            <option value="1">Commisaire au compte</option>
+                                            <option value="2">Trésorie</option>
+                                            <option value="3">Olo tsotra</option>
                                         </select>
+                                    </div>
+                                </div>
+                                {/* Facebook , adresse , date d'inscription */}
+                                <div className="row">
+                                    <div className="col-md-4 mt-2">
+                                        <label style={{fontWeight: 'bold', fontSize: '17px'}} for="adresse" className="roboto-font">Adresse</label>
+                                        <input className="form-control p-3 rounded-0 roboto-font" type="text" value={membreInput.adresse ?? ''} id="adresse" name="adresse" autoComplete="false" placeholder="Saisir votre adresse" onChange={handleInput}/>
+                                    </div>
+                                    <div className="col-md-4 mt-2">
+                                        <label style={{fontWeight: 'bold', fontSize: '17px'}} for="facebook" className="roboto-font">Facebook</label>
+                                        <input className="form-control p-3 rounded-0 roboto-font" type="text" value={membreInput.facebook ?? ''} id="facebook" name="facebook" autoComplete="false" placeholder="Saisir votre contact" onChange={handleInput}/>
                                     </div>
                                     <div className="col-md-4 mt-2">
                                         <label style={{fontWeight: 'bold', fontSize: '17px'}} for="date_inscription" className="roboto-font">Date d'inscription</label>
-                                        <input className="form-control p-3 rounded-0 roboto-font" value={membreInput.date_inscription ?? ''} id="date_inscription" name="date_inscription" type="date" onChange={handleInput} autoComplete="false"/>
-                                    </div>
+                                        <input className="form-control p-3 rounded-0 roboto-font" type="date" value={membreInput.date_inscription ?? ''} id="date_inscription" name="date_inscription" autoComplete="false" placeholder="Saisir votre date d'inscription" onChange={handleInput}/>
+                                    </div>  
                                 </div>
                                 <hr className="mt-4"/>
                                 <div className="row">
                                     <div className="col-md-4 mt-2 offset-md-4">
-                                    <Link to="/admin/liste_des_electeurs_membres" className="btn btn-danger p-3 rounded-0 w-100 roboto-font">Annuler</Link>
+                                    <Link to="/admin/liste_des_membres_fimpisava" className="btn btn-danger p-3 rounded-0 w-100 roboto-font">Annuler</Link>
                                     </div>
                                     <div className="col-md-4 mt-2">
                                         <button type="submit" className="btn btn-info p-3 rounded-0 text-white w-100 roboto-font">Enregistre</button>
@@ -189,4 +251,4 @@ const AjouterUnElecteurMembre = () =>{
     );
 }
 
-export default AjouterUnElecteurMembre;
+export default AjouterUnMembreFimpisava;
