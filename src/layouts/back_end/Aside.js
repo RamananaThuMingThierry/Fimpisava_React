@@ -46,6 +46,22 @@ const Aside = () =>{
                 </nav>
             </div>
           </div>
+
+          <div className="nav">
+            <div className="sb-sidenav-menu-heading">Filtres</div>
+              <Link to="/admin/recherche" className="nav-link roboto-font">
+                <div className="sb-nav-link-icon"><i className="fas fa-solid fa-search"></i></div>
+                Recherche
+              </Link>
+          </div>
+          
+          <div className="nav">
+            <div className="sb-sidenav-menu-heading">Filières</div>
+              <Link to="/admin/liste_des_filieres" className="nav-link roboto-font">
+                <div className="sb-nav-link-icon"><i className="fas fa-solid fa-search"></i></div>
+                Filières
+              </Link>
+          </div>
           
           <div className="nav">
             <div className="sb-sidenav-menu-heading">Statistiques</div>

@@ -21,6 +21,8 @@ import ListeMembresAntalaha from "../../components/back_end/district/antalaha/li
 import ListeMembresSAMBAVA from "../../components/back_end/district/sambava/liste_membre_sambava";
 import ListeMembresAndapa from "../../components/back_end/district/andapa/liste_membre_andapa";
 import ListeMembresVohemar from "../../components/back_end/district/vohemar/liste_membre_vohemar";
+import Recherche from "../../components/back_end/filtres/recherche";
+import ListeDesFilieres from "../../components/back_end/filieres/liste_des_filieres";
 
 class MasterLayout extends Component{
     render(){
@@ -36,6 +38,10 @@ class MasterLayout extends Component{
                             <div class="container-fluid">
                                 <Switch>
                                     <Route exact path="/admin/tableau_de_bord" component={TableauDeBoard} />
+
+                                    {/* --------------------------------- Filières --------------------------------- */}
+                                    <Route exact path="/admin/liste_des_filieres" component={ListeDesFilieres} />
+                                    
 
                                     {/* --------------------------------- Membres FI.MPI.SAVA --------------------------------- */}
                                     
@@ -79,6 +85,9 @@ class MasterLayout extends Component{
                                     <Route exact path="/admin/afficher_un_utilisateur/:id" component={AfficherUnUtilisateur} />
                                     {/* <Route exact path="/admin/approuve_un_membre_fimpisava/:id" component={ApprouveUnMembreFimpisava} /> */}
                                     
+                                    {/* --------------------------------- Recherche ---------------------------------------- */}
+                                    <Route exact path="/admin/recherche" component={Recherche} />
+                                 
                                     {/* --------------------------------- Statistiques ---------------------------------------- */}
                                     <Route exact path="/admin/statistiques" component={Statistiques} />
 
