@@ -19,7 +19,7 @@ const AfficherUnMembreFimpisava = (props) =>{
       }else if($valeur == "2"){
         return "Trésorie";
       }else if($valeur == "3"){
-        return "Olo tsotra";
+        return "Membre";
       }
     }
 
@@ -102,7 +102,7 @@ const AfficherUnMembreFimpisava = (props) =>{
                                 <div className="row">
                                     <div className="col-md-4 mt-2">
                                         <label style={{fontWeight: 'bold', fontSize: '17px'}} className="roboto-font">Filières</label>
-                                        <input className="form-control p-3 rounded-0 roboto-font" value={afficherUnMembreFimpisava.filieres ?? '-'} disabled style={{backgroundColor:'white'}}/>
+                                        <input className="form-control p-3 rounded-0 roboto-font" value={afficherUnMembreFimpisava.filieres_id} disabled style={{backgroundColor:'white'}}/>
                                     </div>
                                     <div className="col-md-4 mt-2">
                                         <label style={{fontWeight: 'bold', fontSize: '17px'}} className="roboto-font">Niveau</label>
