@@ -23,6 +23,7 @@ import ListeMembresAndapa from "../../components/back_end/district/andapa/liste_
 import ListeMembresVohemar from "../../components/back_end/district/vohemar/liste_membre_vohemar";
 import Recherche from "../../components/back_end/filtres/recherche";
 import ListeDesFilieres from "../../components/back_end/filieres/liste_des_filieres";
+import ModifierUnFiliere from "../../components/back_end/filieres/modifier_un_filiere";
 
 class MasterLayout extends Component{
     render(){
@@ -41,7 +42,7 @@ class MasterLayout extends Component{
 
                                     {/* --------------------------------- Filières --------------------------------- */}
                                     <Route exact path="/admin/liste_des_filieres" component={ListeDesFilieres} />
-                                    
+                                    <Route exact path="/admin/modifier_un_filiere/:id" component={ModifierUnFiliere} />
 
                                     {/* --------------------------------- Membres FI.MPI.SAVA --------------------------------- */}
                                     

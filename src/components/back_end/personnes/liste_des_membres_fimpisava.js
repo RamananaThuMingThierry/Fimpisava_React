@@ -50,7 +50,7 @@ const ListeDesMembresFimpisava = () =>{
 
     useEffect(() =>{
         axios.get(`api/liste_des_membres_fimpisava`).then(res =>{
-            if(res.status === 200){
+            if(res.data.status === 200){
                 setliste_des_membres_fimpisava(res.data.liste_des_membres_fimpisava);   
                 }
          });
