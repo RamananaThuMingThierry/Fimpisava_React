@@ -141,9 +141,7 @@ const ListeMembresSAMBAVA = () =>{
                                 DISTRICT SAMBAVA
                             </h3>
                             <div className="d-flex justify-content-between align-items-center">
-                                <button onClick={Acutaliser} className="btn rounded-0 btn-primary btn-md mt-1"><i className="fas fa-refresh"></i></button>
-                                <span>&nbsp;</span>
-                                <Link to="/admin/ajouter_un_membre_fimpisava" type="button" className="btn rounded-0 mt-1 btn-success"><i className="fas fa-user-plus"></i></Link>    
+                                <button onClick={Acutaliser} className="btn rounded-0 btn-primary btn-md mt-1"><i className="fas fa-refresh"></i></button>  
                             </div>
                         </div>
                     </div>

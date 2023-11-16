@@ -37,6 +37,7 @@ const Aside = () =>{
                 Districts
                 <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
             </Link>
+            
             <div className="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                 <nav className="sb-sidenav-menu-nested nav">
                     <Link className="nav-link roboto-font" to="/admin/liste_membres_district_sambava">Sambava</Link>
@@ -46,19 +47,11 @@ const Aside = () =>{
                 </nav>
             </div>
           </div>
-
-          <div className="nav">
-            <div className="sb-sidenav-menu-heading">Filtres</div>
-              <Link to="/admin/recherche" className="nav-link roboto-font">
-                <div className="sb-nav-link-icon"><i className="fas fa-solid fa-search"></i></div>
-                Recherche
-              </Link>
-          </div>
           
           <div className="nav">
             <div className="sb-sidenav-menu-heading">Filières</div>
               <Link to="/admin/liste_des_filieres" className="nav-link roboto-font">
-                <div className="sb-nav-link-icon"><i className="fas fa-solid fa-search"></i></div>
+                <div className="sb-nav-link-icon"><i className="fas fa-solid fa-list"></i></div>
                 Filières
               </Link>
           </div>

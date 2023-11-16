@@ -31,6 +31,35 @@ const ModifierUnFiliere = (props) => {
       setfiliere({...filiere, [e.target.name]: e.target.value});
   }
 
+  const ModifierUnFiliereSubmit = e =>{
+    e.preventDefault();
+
+    const id_filiere = props.match.params.id;
+
+    const formData = new FormData();
+
+    filiere.nom_filieres = filiere.nom_filieres ?? '';
+
+    if(filiere.nom_filieres == ''){
+        swal("Avertissement", "Veuillez saisir nom du filière !", "warning");
+    }else{
+
+        formData.append('nom_filieres', filiere.nom_filieres);
+        console.log(formData);
+
+            axios.post(`api/modifier_un_filiere/${id_filiere}`, formData).then(res =>{
+                if(res.data.status === 200){
+                    swal("Réussi", res.data.message, "success");
+                    history.push('/admin/liste_des_filieres');
+                }else if(res.data.status === 404){
+                    swal("Avertissement", res.data.message, "warning");
+                }else if(res.data.status === 422){
+                    swal("Avertissement", res.data.message, "warning");
+                }
+            });
+    }
+  }
+
   if(loading){
     return <Loading/>
   }
@@ -48,7 +77,7 @@ const ModifierUnFiliere = (props) => {
             <div className="col-md-6 offset-md-3">
                 <div className="card elevation-1 border-0 rounded-0 mt-1">
                     <div className="card-body">
-                        <form>
+                        <form onSubmit={ModifierUnFiliereSubmit}>
                             <div className="row">
                               <div className="col-md-12">
                                 <label style={{fontWeight: 'bold', fontSize: '17px'}} for="nom_filieres" className="roboto-font">Nom</label>
