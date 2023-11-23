@@ -201,7 +201,7 @@ const ListeDesMembresFimpisava = () =>{
                                                         :
                                                         <>
                                                          <Link to={`afficher_un_membre_fimpisava/${item.id}`} className="btn btn-warning btn-md ml-2 rounded-0"><i className="fas fa-eye"></i></Link>
-                                                            <Link to={`modifier_un_electeur_membre/${item.id}`} className="btn btn-primary btn-md ml-2"><i className="fa fa-edit"></i></Link>
+                                                            <Link to={`modifier_un_membre_fimpisava/${item.id}`} className="btn btn-primary btn-md ml-2"><i className="fa fa-edit"></i></Link>
                                                             <button className="rounded-0 btn btn-danger btn-md d-inline" onClick={(e) => SupprimerUnMembreFimpisava(e, item.id)}><i className="fas fa-trash"></i></button>
                                                         </>
                                                     }

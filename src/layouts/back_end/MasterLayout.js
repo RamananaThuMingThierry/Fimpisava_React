@@ -24,6 +24,7 @@ import ListeMembresVohemar from "../../components/back_end/district/vohemar/list
 import Recherche from "../../components/back_end/filtres/recherche";
 import ListeDesFilieres from "../../components/back_end/filieres/liste_des_filieres";
 import ModifierUnFiliere from "../../components/back_end/filieres/modifier_un_filiere";
+import ModifierUnMembreFimpisava from "../../components/back_end/personnes/modifier_un_membre_fimpisava";
 
 class MasterLayout extends Component{
     render(){
@@ -48,7 +49,7 @@ class MasterLayout extends Component{
                                     
                                     <Route exact path="/admin/ajouter_un_membre_fimpisava" component={AjouterUnMembreFimpisava} />
                                     <Route exact path="/admin/liste_des_membres_fimpisava" component={ListeDesMembresFimpisava} />
-                                    {/* <Route exact path="/admin/modifier_un_membre_fimpisava/:id" component={ModifierUnMembreFimpisava} /> */}
+                                    <Route exact path="/admin/modifier_un_membre_fimpisava/:id" component={ModifierUnMembreFimpisava} />
                                     <Route exact path="/admin/afficher_un_membre_fimpisava/:id" component={AfficherUnMembreFimpisava} />
                                         
                                     {/* ---------------------- Liste des membres dans le district Sambava ------------------------*/}

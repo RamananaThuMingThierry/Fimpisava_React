@@ -98,8 +98,6 @@ const AjouterUnMembreFimpisava = () =>{
             formData.append('facebook', membreInput.facebook);
             formData.append('telephone', membreInput.telephone);
             formData.append('date_inscription', membreInput.date_inscription);
-            
-            console.log(formData);
     
             axios.post(`api/ajouter_un_membre_fimpisava`, formData).then(res =>{
                 axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';   
@@ -149,7 +147,7 @@ const AjouterUnMembreFimpisava = () =>{
 
                                     <div className="col-md-4 mt-2">
                                         <div className="d-flex flex-column justify-content-center align-items-center">
-                                            <img className="mb-1 rounded-1" src={picture.photo != '' ? picture :  `${process.env.PUBLIC_URL}/assets/photo.jpg`} height="189px" width="189px" alt="Image"/>                                          
+                                            <img className="mb-1 rounded-1" name="photo" src={picture.photo != '' ? picture :  `${process.env.PUBLIC_URL}/assets/photo.jpg`} height="189px" width="189px" alt="Image"/>                                          
                                             <input type="file" name="photo" onChange={handleImage} className="mt-3 form-control rounded-0 p-3"/>
                                         </div>
                                     </div>
