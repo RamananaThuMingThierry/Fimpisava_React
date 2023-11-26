@@ -11,16 +11,32 @@ const AfficherUnMembreFimpisava = (props) =>{
     const [loading, setLoading]  = useState(true);
     const [afficherUnMembreFimpisava, setMembresFimpisava] = useState([]);
 
-    const fonction_membre = ($valeur) =>{
-      if($valeur == "0"){
-        return "Présient";
-      }else if($valeur == "1"){
-        return "Commisaire au compte";
-      }else if($valeur == "2"){
-        return "Trésorie";
-      }else if($valeur == "3"){
-        return "Membre";
-      }
+    const fonction_membre = valeur =>{
+       if(valeur == "0"){
+            return "Bureau";
+       }else if(valeur == "1"){
+            return "Commissaire au compte";
+       }else if(valeur == "2"){
+            return "Président(e)";
+       }else if(valeur == "3"){
+           return "Membre";
+       }else if(valeur == "4"){
+           return "Responsable Social";
+       }else if(valeur == "5"){
+            return "Responsable Sport";
+       }else if(valeur == "6"){
+            return "Responsable Communication";
+       }else if(valeur == "7"){
+            return "Secrétaire Général";
+       }else if(valeur == "8"){
+            return "Trésorie";
+       }else if(valeur == "9"){
+            return "Vice Président(e)";
+       }else if(valeur == "10"){
+            return "Vice Trésorie";
+       }else{
+            return "-";
+       }
     }
 
     useEffect(() =>{ 
@@ -48,7 +64,7 @@ const AfficherUnMembreFimpisava = (props) =>{
             <div className="row">
                 <div className="col-md-10 offset-md-1">
                     <div className="card elevation-1 border-0 rounded-0 mt-2">
-                        <h2 className="text-center text-muted roboto-font my-3">Apropos</h2>
+                        <h2 className="text-center roboto-font text-success my-3">A P R O P O S</h2>
                     </div>
                 </div>
             </div>

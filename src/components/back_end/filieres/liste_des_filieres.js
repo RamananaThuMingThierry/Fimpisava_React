@@ -32,19 +32,19 @@ const ListeDesFilieres = () =>{
         setLoading(true);
         await axios.post(`/api/ajouter_un_filiere`, nouveau_filiere).then(res =>{
             axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';   
-            if(res.status === 200){
+            if(res.data.status === 200){
                 searchInput.search = '';
                 axios.get(`api/liste_des_filieres`).then(res =>{
                     if(res.data.status === 200){
                         setliste_des_filieres(res.data.liste_des_filieres);   
                     }
                 });
-                setLoading(false);
                 swal("Réussi", res.data.message, "success");
                 history.push('/admin/liste_des_filieres');
             }else if(res.data.status === 404){
                 swal("Avertissement", res.data.message, "warning");
             }
+            setLoading(false);
         });
       handleCloseModal();
     } catch (error) {

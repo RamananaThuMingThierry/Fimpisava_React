@@ -76,7 +76,7 @@ const ModifierUnMembreFimpisava = (props) =>{
         membreInput.district = membreInput.district ?? '';
         membreInput.adresse = membreInput.adresse ?? '';
         membreInput.profession = membreInput.profession ?? '';
-        membreInput.fonction = membreInput.profession ?? '';
+        membreInput.fonction = membreInput.fonction ?? '';
         membreInput.contact = membreInput.contact ?? '';
         membreInput.facebook = membreInput.facebook ?? '';
         membreInput.telephone = membreInput.telephone ?? '';
@@ -235,6 +235,7 @@ const ModifierUnMembreFimpisava = (props) =>{
                                           <option value="Licence 3">Licence 3</option>
                                           <option value="Master 1">Master 1</option>
                                           <option value="Master 2">Master 2</option>
+                                          <option value="Doctorat">Doctorat</option>
                                       </select>
                                   </div>
                                   <div className="col-md-4 mt-2">
@@ -255,11 +256,18 @@ const ModifierUnMembreFimpisava = (props) =>{
                                   <div className="col-md-4 mt-2">
                                       <label style={{fontWeight: 'bold', fontSize: '17px'}} for="fonction" className="roboto-font">Fonction</label>
                                       <select className="form-select rounded-0 p-3 roboto-font" name="fonction" id="fonction" value={membreInput.fonction} onChange={handleInput}>
-                                          <option value="" selected>Ouvre ce menu de séléction</option>
-                                          <option value="0">Présient</option>
-                                          <option value="1">Commisaire au compte</option>
-                                          <option value="2">Trésorie</option>
-                                          <option value="3">Membre</option>
+                                      <option value="" selected>Ouvre ce menu de séléction</option>
+                                            <option value="0">Bureau</option>
+                                            <option value="1">Commissaire au compte</option>
+                                            <option value="2">Présient(e)</option>
+                                            <option value="3">Membre</option>
+                                            <option value="4">Responsable Social</option>
+                                            <option value="5">Responsable Sport</option>
+                                            <option value="6">Responsable Communication</option>
+                                            <option value="7">Secrétaire Général</option>
+                                            <option value="8">Trésorie</option>
+                                            <option value="9">Vice Présient(e)</option>
+                                            <option value="10">Vice Trésorie</option>
                                       </select>
                                   </div>
                               </div>
