@@ -8,7 +8,10 @@ const AfficherUnMembreFimpisava = (props) =>{
 
     const history = useHistory();
 
+    const [liste_des_filieres, setliste_des_filieres] = useState([]);   
+
     const [loading, setLoading]  = useState(true);
+ 
     const [afficherUnMembreFimpisava, setMembresFimpisava] = useState([]);
 
     const fonction_membre = valeur =>{
@@ -41,6 +44,12 @@ const AfficherUnMembreFimpisava = (props) =>{
 
     useEffect(() =>{ 
         const id_membre_fimpisava = props.match.params.id;
+
+        axios.get(`api/liste_des_filieres`).then(res =>{
+            if(res.status === 200){
+                setliste_des_filieres(res.data.liste_des_filieres);   
+            }
+         });
         axios.get(`api/afficher_un_membre/${id_membre_fimpisava}`).then(res =>{
             if(res.data.status === 200){
                 setMembresFimpisava(res.data.membre_fimpisava);
@@ -118,11 +127,18 @@ const AfficherUnMembreFimpisava = (props) =>{
                                 <div className="row">
                                     <div className="col-md-4 mt-2">
                                         <label style={{fontWeight: 'bold', fontSize: '17px'}} className="roboto-font">Filières</label>
-                                        <input className="form-control p-3 rounded-0 roboto-font" value={afficherUnMembreFimpisava.filieres_id} disabled style={{backgroundColor:'white'}}/>
+                                        <select disabled className="bg-white form-select rounded-0 p-3 roboto-font" name="filieres" id="filieres" value={afficherUnMembreFimpisava.filieres_id}>
+                                            <option value="" selected>Ouvre ce menu de séléction</option>
+                                            {
+                                                liste_des_filieres.map(item => {
+                                                    return <option value={item.id}>{item.nom_filieres}</option>
+                                                })
+                                            }
+                                        </select>    
                                     </div>
                                     <div className="col-md-4 mt-2">
                                         <label style={{fontWeight: 'bold', fontSize: '17px'}} className="roboto-font">Niveau</label>
-                                        <input className="form-control p-3 rounded-0 roboto-font" value={afficherUnMembreFimpisava.niveau ?? 'Non'} disabled style={{backgroundColor:'white'}}/>
+                                        <input className="form-control p-3 rounded-0 roboto-font" value={afficherUnMembreFimpisava.niveau ?? '-'} disabled style={{backgroundColor:'white'}}/>
                                     </div>
                                     <div className="col-md-4 mt-2">
                                         <label style={{fontWeight: 'bold', fontSize: '17px'}} className="roboto-font">Profession</label>

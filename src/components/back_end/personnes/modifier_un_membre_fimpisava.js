@@ -71,7 +71,7 @@ const ModifierUnMembreFimpisava = (props) =>{
         membreInput.prenom = membreInput.prenom ?? '';
         membreInput.date_de_naissance = membreInput.date_de_naissance ?? '';
         membreInput.lieu_de_naissance = membreInput.lieu_de_naissance ?? '';
-        membreInput.filieres = membreInput.filieres_id ?? '';
+        membreInput.filieres_id = membreInput.filieres_id ?? '';
         membreInput.niveau = membreInput.niveau ?? '';
         membreInput.district = membreInput.district ?? '';
         membreInput.adresse = membreInput.adresse ?? '';
@@ -92,9 +92,9 @@ const ModifierUnMembreFimpisava = (props) =>{
           swal("Avertissement", "Veuillez saisir votre date de naissance !", "warning");
       }else if(membreInput.lieu_de_naissance == ''){
           swal("Avertissement", "Veuillez saisir votre lieu de naissance", "warning");
-      }else if(membreInput.filieres == ''){
+      }else if(membreInput.filieres_id == ''){
           swal("Avertissement", "Veuillez saisir votre filieres", "warning");
-      }else if(membreInput.filieres != '' && membreInput.niveau == ''){
+      }else if(membreInput.filieres_id != '' && membreInput.niveau == ''){
           swal("Avertissement", "Veuillez saisir votre niveau", "warning");
       }else if(membreInput.profession == ''){
           swal("Avertissement", "Veuillez saisir votre profession", "warning");
@@ -113,7 +113,7 @@ const ModifierUnMembreFimpisava = (props) =>{
             formData.append('prenom', membreInput.prenom);
             formData.append('date_de_naissance', membreInput.date_de_naissance);
             formData.append('lieu_de_naissance', membreInput.lieu_de_naissance);
-            formData.append('filieres', membreInput.filieres);
+            formData.append('filieres', membreInput.filieres_id);
             formData.append('niveau', membreInput.niveau);
             formData.append('district', membreInput.district);
             formData.append('adresse', membreInput.adresse);
@@ -150,7 +150,7 @@ const ModifierUnMembreFimpisava = (props) =>{
           <div className="row">
               <div className="col-md-12">
                   <div className="card elevation-1 border-0 rounded-0 mt-2">
-                      <h3 className="text-center text-muted my-3 roboto-font">Ajouter un membre FI.MPI.SAVA</h3>
+                      <h3 className="text-center text-muted my-3 roboto-font">Modifier un membre FI.MPI.SAVA</h3>
                   </div>
               </div>
           </div>
@@ -186,6 +186,7 @@ const ModifierUnMembreFimpisava = (props) =>{
                                                   <option value="Andapa">Andapa</option>
                                                   <option value="Vohemar">Vohémar</option>
                                                   <option value="Antalaha">Antalaha</option>
+                                                  <option value="Sympathisant(e)">Sympathisant(e)</option>
                                               </select>
                                           </div>
                                       </div>
@@ -216,8 +217,8 @@ const ModifierUnMembreFimpisava = (props) =>{
                               {/* Filières , niveau , profession */}
                               <div className="row">
                                   <div className="col-md-4 mt-2">
-                                      <label style={{fontWeight: 'bold', fontSize: '17px'}} for="filieres" className="roboto-font">Filière</label>
-                                      <select className="form-select rounded-0 p-3 roboto-font" name="filieres" id="filieres" value={membreInput.filieres} onChange={handleInput}>
+                                      <label style={{fontWeight: 'bold', fontSize: '17px'}} for="filieres_id" className="roboto-font">Filière</label>
+                                      <select className="form-select rounded-0 p-3 roboto-font" name="filieres_id" id="filieres_id" value={membreInput.filieres_id} onChange={handleInput}>
                                           <option value="" selected>Ouvre ce menu de séléction</option>
                                           {
                                               liste_des_filieres.map(item => {
@@ -235,6 +236,7 @@ const ModifierUnMembreFimpisava = (props) =>{
                                           <option value="Licence 3">Licence 3</option>
                                           <option value="Master 1">Master 1</option>
                                           <option value="Master 2">Master 2</option>
+                                          <option value="6ème Année">6ème Année</option>
                                           <option value="Doctorat">Doctorat</option>
                                       </select>
                                   </div>

@@ -160,6 +160,7 @@ const ListeDesMembresFimpisava = () =>{
                                     <option value="numero_carte">Numéro carte</option>
                                     <option value="nom">Nom</option>
                                     <option value="prenom">Prénom</option>
+                                    <option value="adresse">Adresse</option>
                                 </select>
                                 <button type="submit" className="btn btn-outline-primary rounded-0 roboto-font">Recherche</button>
                             </div>

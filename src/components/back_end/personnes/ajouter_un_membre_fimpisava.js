@@ -68,7 +68,7 @@ const AjouterUnMembreFimpisava = () =>{
             swal("Avertissement", "Veuillez saisir votre lieu de naissance", "warning");
         }else if(membreInput.filieres == ''){
             swal("Avertissement", "Veuillez saisir votre filieres", "warning");
-        }else if(membreInput.filieres != '' && membreInput.niveau == ''){
+        }else if(membreInput.filieres == 'Nouveau Bachelier' && membreInput.niveau != ''){
             swal("Avertissement", "Veuillez saisir votre niveau", "warning");
         }else if(membreInput.profession == ''){
             swal("Avertissement", "Veuillez saisir votre profession", "warning");
@@ -166,6 +166,7 @@ const AjouterUnMembreFimpisava = () =>{
                                                     <option value="Andapa">Andapa</option>
                                                     <option value="Vohemar">Vohémar</option>
                                                     <option value="Antalaha">Antalaha</option>
+                                                    <option value="Sympathisant(e)">Sympathisant(e)</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -215,6 +216,7 @@ const AjouterUnMembreFimpisava = () =>{
                                             <option value="Licence 3">Licence 3</option>
                                             <option value="Master 1">Master 1</option>
                                             <option value="Master 2">Master 2</option>
+                                            <option value="6ème Année">6ème Année</option>
                                             <option value="Doctorat">Doctorat</option>
                                         </select>
                                     </div>

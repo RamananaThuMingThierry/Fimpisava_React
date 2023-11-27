@@ -41,7 +41,8 @@ const data = [
 
 // const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 // const COLORS = ['#00C49F', '#FFBB28', '#FF8042', '#0088FE'];
-const COLORS = ['#FFBB28', '#FF8042', '#0088FE', '#00C49F'];
+// const COLORS = ['#FFBB28', '#FF8042', '#0088FE', '#00C49F'];
+const COLORS = ['#FFBB28', '#FF8042', '#00C49F', '#0088FE'];
 // const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
   return (
